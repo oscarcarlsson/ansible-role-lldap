@@ -2,4 +2,4 @@
 default_lldap_repo_filename: "lldap"
 default_lldap_packages:
     - lldap
-deault_lldap_repo_line: "deb http://download.opensuse.org/repositories/home:/Masgalor:/LLDAP/{{ ansible_distribution }}_{{ ansible_distribution_major_version }}/ /"
+default_lldap_repo_line: "deb http://download.opensuse.org/repositories/home:/Masgalor:/LLDAP/{{ ansible_distribution }}_{{ ansible_distribution_major_version }}/ /"

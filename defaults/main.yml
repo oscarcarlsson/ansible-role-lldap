@@ -40,5 +40,6 @@ lldap_smtp_reply_to: "{{ default_lldap_smtp_reply_to }}"
 
 lldap_ldaps_enable: "{{ default_lldap_ldaps_enable }}"
 lldap_ldaps_port: "{{ default_lldap_ldaps_port }}"
-#lldap_ldaps_private_key: "contents of private key"
-#lldap_ldaps_certificate: "contents of certificate"
+# set when lldap_ldaps_enable is true
+# lldap_ldaps_private_key: "contents of private key"
+# lldap_ldaps_certificate: "contents of certificate"
