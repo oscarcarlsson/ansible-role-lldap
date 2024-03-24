@@ -1,6 +1,7 @@
 # danielsreichenbach.lldap
 
 [![CI][badge-img]][badge-url]
+[![Galaxy Role][galaxy-img]][galaxy-url]
 
 An Ansible role for installing and configuring [Light LDAP][] on Debian and
 Ubuntu servers.
@@ -97,3 +98,5 @@ This role has received contributions from
 [Light LDAP]: https://github.com/lldap/lldap
 [badge-img]: https://github.com/danielsreichenbach/ansible-role-lldap/workflows/CI/badge.svg?event=push
 [badge-url]: https://github.com/danielsreichenbach/ansible-role-lldap/actions?query=workflow%3ACI
+[galaxy-img]: https://img.shields.io/badge/ansible--galaxy-lldap-blue.svg
+[galaxy-url]: https://galaxy.ansible.com/danielsreichenbach/lldap/
