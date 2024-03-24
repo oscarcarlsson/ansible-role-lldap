@@ -1,0 +1,19 @@
+[Unit]
+Description=Nitnelave LLDAP
+Documentation=https://github.com/nitnelave/lldap
+After=network.target
+
+[Service]
+Type=simple
+User={{ lldap_user }}
+Group={{ lldap_group }}
+ExecStart=/usr/bin/lldap run --config-file {{ lldap_conf }}
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+WorkingDirectory={{ lldap_conf | dirname }}
+ReadWriteDirectories={{ lldap_data_dir }}
+
+[Install]
+WantedBy=multi-user.target

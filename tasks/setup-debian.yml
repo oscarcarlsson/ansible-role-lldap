@@ -1,0 +1,42 @@
+---
+- name: Debian | Ensure GPG is available
+  ansible.builtin.apt:
+      name: gpg
+      state: present
+
+- name: Debian | Trust the Light LDAP packaging key
+  when: "lldap_repo_enable | bool"
+  ansible.builtin.copy:
+      src: "lldap-{{ ansible_distribution | lower }}-{{ ansible_distribution_release }}.asc"
+      dest: "/etc/apt/trusted.gpg.d/lldap-{{ ansible_distribution | lower }}-{{ ansible_distribution_release }}.asc"
+      mode: 0644
+  register: _lldap_apt_key
+
+- name: Debian | Add Light LDAP repository
+  when: "lldap_repo_enable | bool"
+  ansible.builtin.apt_repository:
+      repo: "{{ lldap_repo_line }}"
+      filename: "{{ lldap_repo_filename }}"
+      state: present
+  register: _lldap_apt_repo
+
+- name: Debian | Pin the Light LDAP repository
+  when: "lldap_repo_enable | bool"
+  ansible.builtin.template:
+      src: apt.pin.j2
+      dest: /etc/apt/preferences.d/lldap
+      owner: root
+      group: root
+      mode: 0644
+  register: _lldap_apt_pin
+
+- name: Debian | Update the package cache
+  when: (_lldap_apt_key.changed or _lldap_apt_pin.changed or _lldap_apt_repo.changed) and lldap_repo_enable
+  ansible.builtin.apt:
+      update_cache: true
+      cache_valid_time: 3600
+
+- name: Debian | Install Light LDAP server
+  ansible.builtin.package:
+      name: "{{ lldap_packages }}"
+      state: present

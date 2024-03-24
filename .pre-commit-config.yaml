@@ -1,0 +1,23 @@
+---
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks.git
+      rev: "v4.5.0"
+      hooks:
+          - id: check-merge-conflict
+          - id: check-executables-have-shebangs
+          - id: check-yaml
+          - id: end-of-file-fixer
+    # Linters
+    - repo: https://github.com/DavidAnson/markdownlint-cli2.git
+      rev: "v0.12.1"
+      hooks:
+          - id: markdownlint-cli2
+            name: markdownlint
+    - repo: https://github.com/adrienverge/yamllint.git
+      rev: "v1.35.1"
+      hooks:
+          - id: yamllint
+    - repo: https://github.com/ansible-community/ansible-lint.git
+      rev: "v6.22.2"
+      hooks:
+          - id: ansible-lint

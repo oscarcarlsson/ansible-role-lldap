@@ -1,0 +1,42 @@
+---
+# defaults file for danielsreichenbach.lldap
+lldap_repo_enable: "{{ default_lldap_repo_enable }}"
+lldap_repo_filename: "{{ default_lldap_repo_filename }}"
+lldap_repo_origin: "{{ default_lldap_repo_origin }}"
+lldap_packages: "{{ default_lldap_packages }}"
+lldap_repo_line: "{{ default_lldap_repo_line }}"
+
+lldap_conf: "{{ default_lldap_conf }}"
+lldap_data_dir: "{{ default_lldap_data_dir }}"
+lldap_system_service: "{{ default_lldap_system_service }}"
+
+lldap_group: "{{ default_lldap_group }}"
+lldap_user: "{{ default_lldap_user }}"
+
+lldap_ldap_host: "{{ default_lldap_ldap_host }}"
+lldap_ldap_port: "{{ default_lldap_ldap_port }}"
+lldap_http_host: "{{ default_lldap_http_host }}"
+lldap_http_port: "{{ default_lldap_http_port }}"
+lldap_http_url: "{{ default_lldap_http_url }}"
+lldap_jwt_secret: "{{ default_lldap_jwt_secret }}"
+lldap_ldap_base_dn: "{{ default_lldap_ldap_base_dn }}"
+lldap_ldap_user_dn: "{{ default_lldap_ldap_user_dn }}"
+lldap_ldap_user_email: "{{ default_lldap_ldap_user_email }}"
+lldap_ldap_user_pass: "{{ default_lldap_ldap_user_pass }}"
+lldap_force_reset_admin_password: "{{ default_lldap_force_reset_admin_password }}"
+lldap_key_seed: "{{ default_lldap_key_seed }}"
+
+lldap_database_url: "{{ default_lldap_database_url }}"
+
+lldap_smtp_enable: "{{ default_lldap_smtp_enable }}"
+lldap_smtp_enable_password_reset: "{{ default_lldap_smtp_enable_password_reset }}"
+lldap_smtp_server: "{{ default_lldap_smtp_server }}"
+lldap_smtp_port: "{{ default_lldap_smtp_port }}"
+lldap_smtp_smtp_encryption: "{{ default_lldap_smtp_smtp_encryption }}"
+lldap_smtp_user: "{{ default_lldap_smtp_user }}"
+lldap_smtp_password: "{{ default_lldap_smtp_password }}"
+lldap_smtp_from: "{{ default_lldap_smtp_from }}"
+lldap_smtp_reply_to: "{{ default_lldap_smtp_reply_to }}"
+
+lldap_ldaps_enable: "{{ default_lldap_ldaps_enable }}"
+lldap_ldaps_port: "{{ default_lldap_ldaps_port }}"

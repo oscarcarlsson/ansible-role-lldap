@@ -1,0 +1,6 @@
+---
+- name: Install and configure Light LDAP
+  hosts: localhost
+  remote_user: root
+  roles:
+    - danielsreichenbach.lldap

@@ -1,0 +1,39 @@
+---
+# vars file for danielsreichenbach.lldap
+default_lldap_repo_enable: true
+default_lldap_repo_origin: "download.opensuse.org"
+
+default_lldap_conf_dir: "/etc/lldap"
+default_lldap_conf: "{{ default_lldap_conf_dir }}/lldap_config.toml"
+default_lldap_data_dir: "/var/lib/lldap"
+default_lldap_system_service: "/lib/systemd/system/lldap.service"
+
+default_lldap_group: "lldap"
+default_lldap_user: "lldap"
+
+default_lldap_ldap_host: "0.0.0.0"
+default_lldap_ldap_port: 3890
+default_lldap_http_host: "0.0.0.0"
+default_lldap_http_port: 17170
+default_lldap_http_url: "http://localhost"
+default_lldap_jwt_secret: "REPLACE_WITH_RANDOM"
+default_lldap_ldap_base_dn: "dc=example,dc=com"
+default_lldap_ldap_user_dn: "admin"
+default_lldap_ldap_user_email: "admin@example.com"
+default_lldap_ldap_user_pass: "REPLACE_WITH_PASSWORD"
+default_lldap_force_reset_admin_password: false
+default_lldap_database_url: "sqlite://{{ default_lldap_data_dir }}/users.db?mode=rwc"
+default_lldap_key_seed: "RanD0m STR1ng"
+
+default_lldap_smtp_enable: false
+default_lldap_smtp_enable_password_reset: false
+default_lldap_smtp_server: "smtp.gmail.com"
+default_lldap_smtp_port: 587
+default_lldap_smtp_smtp_encryption: "TLS"
+default_lldap_smtp_user: "sender@gmail.com"
+default_lldap_smtp_password: "password"
+default_lldap_smtp_from: "LLDAP Admin <sender@gmail.com>"
+default_lldap_smtp_reply_to: "Do not reply <noreply@localhost>"
+
+default_lldap_ldaps_enable: false
+default_lldap_ldaps_port: 6360

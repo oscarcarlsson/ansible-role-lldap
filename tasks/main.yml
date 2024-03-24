@@ -1,0 +1,37 @@
+---
+# tasks file for danielsreichenbach.lldap
+- name: Gather instance facts
+  ansible.builtin.setup:
+
+- name: Include variables depending on OS
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+      - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version }}.yml"
+      - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version }}.yml"
+      - "{{ ansible_distribution | lower }}-{{ ansible_distribution_release }}.yml"
+      - "{{ ansible_distribution | lower }}.yml"
+      - "{{ ansible_os_family | lower }}.yml"
+
+- name: Include tasks depending on OS
+  ansible.builtin.include_tasks:
+      file: "{{ item }}"
+      apply:
+          tags:
+              - lldap-install
+  with_first_found:
+      - "setup-{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version }}.yml"
+      - "setup-{{ ansible_distribution | lower }}-{{ ansible_distribution_version }}.yml"
+      - "setup-{{ ansible_distribution | lower }}-{{ ansible_distribution_release }}.yml"
+      - "setup-{{ ansible_distribution | lower }}.yml"
+      - "setup-{{ ansible_os_family | lower }}.yml"
+  tags:
+      - lldap-install
+
+- name: Configure Light LDAP server
+  ansible.builtin.include_tasks:
+      file: configure.yml
+      apply:
+          tags:
+              - lldap-configure
+  tags:
+      - lldap-configure
