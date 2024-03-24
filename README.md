@@ -6,11 +6,14 @@
 An Ansible role for installing and configuring [Light LDAP][] on Debian and
 Ubuntu servers.
 
-While Light LDAP generally should be run behind a proxy
+It is recommended to use a proxy for the web interface.
 
 ## Requirements
 
-None.
+- Optional: to run Light LDAP behind a proxy you may something like
+  `geerlingguy.nginx` to deploy `nginx`.
+
+Other proxies such as Caddy or Traefik or fine too.
 
 ## Role Variables
 
