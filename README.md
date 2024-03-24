@@ -3,21 +3,84 @@
 An Ansible role for installing and configuring [Light LDAP][] on Debian and
 Ubuntu servers.
 
+While Light LDAP generally should be run behind a proxy
+
 ## Requirements
 
-- Ansible version `>= 2.13.9` installed
+None.
 
 ## Role Variables
 
-`TODO`
+Available variables are listed below, along with default values (see
+`defaults/main.yml`):
+
+```yaml
+lldap_repo_enable: true
+lldap_repo_filename: "lldap"
+lldap_repo_origin: "download.opensuse.org"
+lldap_packages: ~ # distro specific
+lldap_repo_line: ~ # distro specific
+
+lldap_conf: "/etc/lldap"
+lldap_data_dir: "/var/lib/lldap"
+lldap_system_service: "/lib/systemd/system/lldap.service"
+
+lldap_group: "lldap"
+lldap_user: "lldap"
+
+lldap_ldap_host: "127.0.0.1"
+lldap_ldap_port: 3890
+lldap_http_host: "127.0.0.1"
+lldap_http_port: 17170
+lldap_http_url: "http://localhost:17170"
+lldap_jwt_secret: "REPLACE_WITH_RANDOM"
+lldap_ldap_base_dn: "dc=example,dc=com"
+lldap_ldap_user_dn: "admin"
+lldap_ldap_user_email: "admin@example.com"
+lldap_ldap_user_pass: "REPLACE_WITH_PASSWORD"
+lldap_force_reset_admin_password: false
+lldap_key_seed: "RanD0m STR1ng"
+
+# by default SQLite3 is used, but any supported backend should work
+lldap_database_url: "sqlite://{{ default_lldap_data_dir }}/users.db?mode=rwc"
+```
+
+Light LDAP can be configured to handle emails for accounts too, when
+`lldap_smtp_enable` is `true`.
+
+```yaml
+lldap_smtp_enable: false
+lldap_smtp_enable_password_reset: false
+lldap_smtp_server: "smtp.example.com"
+lldap_smtp_port: "587"
+lldap_smtp_smtp_encryption: "TLS"
+lldap_smtp_user: "sender@example.com"
+lldap_smtp_password: "password"
+lldap_smtp_from: "LLDAP Admin <sender@example.com>"
+lldap_smtp_reply_to: "Do not reply <noreply@localhost>"
+```
+
+If you want to expose LDAPS too, set `lldap_ldaps_enable` to `true` and provide
+certificate and private key content.
+
+```yaml
+lldap_ldaps_enable: false
+lldap_ldaps_port: 6360
+#lldap_ldaps_private_key: "contents of private key"
+#lldap_ldaps_certificate: "contents of certificate"
+```
 
 ## Dependencies
 
-`TODO`
+None.
 
 ## Example Playbook
 
-`TODO`
+```yaml
+- hosts: all
+  roles:
+    - danielsreichenbach.lldap
+```
 
 ## License
 

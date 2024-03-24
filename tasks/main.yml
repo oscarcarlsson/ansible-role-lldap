@@ -35,3 +35,16 @@
               - lldap-configure
   tags:
       - lldap-configure
+
+- name: Manage Light LDAP SSL certificates
+  when:
+      - "lldap_ldaps_enable | bool"
+      - "lldap_ldaps_private_key is defined"
+      - "lldap_ldaps_certificate is defined"
+  ansible.builtin.include_tasks:
+      file: configure-ssl.yml
+      apply:
+          tags:
+              - lldap-configure-ssl
+  tags:
+      - lldap-configure-ssl
