@@ -148,9 +148,9 @@ reply_to="{{ lldap_smtp_reply_to }}"
 ## To set these options from environment variables, use the following format
 ## (example with "port"): LLDAP_LDAPS_OPTIONS__PORT
 [ldaps_options]
-{% if lldap_ldaps_enable and lldap_ldaps_private_key is defined and lldap_ldaps_certificate is defined %}
+{% if lldap_ldaps_enable | bool %}
 ## Whether to enable LDAPS.
-enabled={{ lldap_ldaps_enable |lower }}
+enabled={{ lldap_ldaps_enable | lower }}
 ## Port on which to listen.
 port={{ lldap_ldaps_port }}
 ## Certificate file.
