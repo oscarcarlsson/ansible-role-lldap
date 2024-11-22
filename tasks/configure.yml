@@ -1,42 +1,42 @@
 ---
 - name: Ensure Light LDAP group is present
   ansible.builtin.group:
-      name: "{{ lldap_user }}"
+      name: '{{ lldap_group }}'
       state: present
       system: true
 
 - name: Ensure Light LDAP user is present
   ansible.builtin.user:
-      name: "{{ lldap_user }}"
-      group: "{{ lldap_group }}"
-      home: "{{ lldap_data_dir }}"
-      shell: "/sbin/nologin"
+      name: '{{ lldap_user }}'
+      group: '{{ lldap_group }}'
+      home: '{{ lldap_data_dir }}'
+      shell: '/sbin/nologin'
       system: true
       state: present
 
 - name: Ensure Light LDAP configuration dir exists.
   ansible.builtin.file:
-      path: "{{ lldap_conf | dirname }}"
+      path: '{{ lldap_conf | dirname }}'
       state: directory
       mode: 0755
-      owner: "{{ lldap_user }}"
-      group: "{{ lldap_group }}"
+      owner: '{{ lldap_user }}'
+      group: '{{ lldap_group }}'
 
 - name: Ensure Light LDAP data dir exists.
   ansible.builtin.file:
-      path: "{{ lldap_data_dir }}"
+      path: '{{ lldap_data_dir }}'
       state: directory
       mode: 0750
-      owner: "{{ lldap_user }}"
-      group: "{{ lldap_group }}"
+      owner: '{{ lldap_user }}'
+      group: '{{ lldap_group }}'
 
 - name: Debian | Configure Light LDAP
   ansible.builtin.template:
       src: etc/lldap/lldap_config.toml.j2
-      dest: "{{ lldap_conf }}"
+      dest: '{{ lldap_conf }}'
       mode: 0640
-      owner: "{{ lldap_user }}"
-      group: "{{ lldap_group }}"
+      owner: '{{ lldap_user }}'
+      group: '{{ lldap_group }}'
   register: _lldap_config
   notify:
       - Restart Light LDAP service
@@ -44,10 +44,10 @@
 - name: Debian | Configure Light LDAP service
   ansible.builtin.template:
       src: lib/systemd/lldap.service.j2
-      dest: "{{ lldap_system_service }}"
+      dest: '{{ lldap_system_service }}'
       mode: 0644
-      owner: "root"
-      group: "root"
+      owner: 'root'
+      group: 'root'
   register: _lldap_service_config
   notify:
       - Restart Light LDAP service

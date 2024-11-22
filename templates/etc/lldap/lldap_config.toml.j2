@@ -154,7 +154,7 @@ enabled={{ lldap_ldaps_enable |lower }}
 ## Port on which to listen.
 port={{ lldap_ldaps_port }}
 ## Certificate file.
-cert_file="{{ lldap_data_dir }}/cert.pem"
+cert_file="{{ lldap_ldaps_certificate }}"
 ## Certificate key file.
-key_file="{{ lldap_data_dir }}/key.pem"
+key_file="{{ lldap_ldaps_key }}"
 {% endif %}

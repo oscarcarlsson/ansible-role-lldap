@@ -6,6 +6,8 @@
 !.gitattributes
 
 # Project files
+/.cache/
+/.fleet/
 /.idea/
 /.vscode/
 
