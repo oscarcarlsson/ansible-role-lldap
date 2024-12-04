@@ -105,6 +105,9 @@ database_url = "{{ lldap_database_url }}"
 ## Randomly generated on first run if it doesn't exist.
 ## Env variable: LLDAP_KEY_FILE
 #key_file = "{{ lldap_data_dir }}/private_key"
+{% if lldap_key_file %}
+key_file = "{{ lldap_key_file }}
+{% endif %}
 
 ## Seed to generate the server private key, see key_file above.
 ## This can be any random string, the recommendation is that it's at least 12
