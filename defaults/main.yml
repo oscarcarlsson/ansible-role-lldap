@@ -43,3 +43,6 @@ lldap_ldaps_port: '{{ default_lldap_ldaps_port }}'
 # set when lldap_ldaps_enable is true
 # lldap_ldaps_certificate: '/path/to/file/on/host'
 # lldap_ldaps_key: '/path/to/file/on/host'
+
+# Allow binding to lower ports (<1024)
+lldap_bind_lower_ports: false

@@ -76,6 +76,13 @@ lldap_ldaps_port: 6360
 #lldap_ldaps_certificate: "contents of certificate"
 ```
 
+If you want to bind the service to lower TCP ports (<1024), like 389 & 689,
+set below to `true`:
+
+```yaml
+lldap_bind_lower_ports: false
+```
+
 ## Dependencies
 
 None.
