@@ -25,7 +25,7 @@ lldap_ldap_user_email: '{{ default_lldap_ldap_user_email }}'
 lldap_ldap_user_pass: '{{ default_lldap_ldap_user_pass }}'
 lldap_force_reset_admin_password: '{{ default_lldap_force_reset_admin_password }}'
 lldap_key_seed: '{{ default_lldap_key_seed }}'
-lldap_key_file: false
+lldap_key_file: ""
 
 lldap_database_url: '{{ default_lldap_database_url }}'
 

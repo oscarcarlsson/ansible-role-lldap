@@ -46,7 +46,7 @@ lldap_ldap_user_email: "admin@example.com"
 lldap_ldap_user_pass: "REPLACE_WITH_PASSWORD"
 lldap_force_reset_admin_password: false
 lldap_key_seed: "RanD0m STR1ng"
-lldap_key_file: false
+lldap_key_file: ""
 
 # by default SQLite3 is used, but any supported backend should work
 lldap_database_url: "sqlite://{{ default_lldap_data_dir }}/users.db?mode=rwc"
