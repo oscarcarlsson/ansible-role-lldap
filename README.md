@@ -66,14 +66,15 @@ lldap_smtp_from: "LLDAP Admin <sender@example.com>"
 lldap_smtp_reply_to: "Do not reply <noreply@localhost>"
 ```
 
-If you want to expose LDAPS too, set `lldap_ldaps_enable` to `true` and provide
-certificate and private key content.
+If you want to expose LDAPS, set `lldap_ldaps_enable` to `true` and set
+`lldap_ldaps_private_key` & `lldap_ldaps_certificate` to point to their
+respective file names.
 
 ```yaml
 lldap_ldaps_enable: false
 lldap_ldaps_port: 6360
-#lldap_ldaps_private_key: "contents of private key"
-#lldap_ldaps_certificate: "contents of certificate"
+#lldap_ldaps_private_key: "path to private key"
+#lldap_ldaps_certificate: "path to server certificate"
 ```
 
 If you want to bind the service to lower TCP ports (<1024), like 389 & 689,
